@@ -1,0 +1,23 @@
+{
+  "name": "aurora-platform",
+  "private": true,
+  "packageManager": "pnpm@12.16.1",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "dev": "turbo run dev --parallel",
+    "build": "turbo run build",
+    "lint": "eslint .",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "db:up": "docker compose up -d db",
+    "db:migrate": "pnpm --filter @aurora/api db:migrate",
+    "db:deploy": "pnpm --filter @aurora/api db:deploy"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "eslint": "10.14.0",
+    "turbo": "2.11.11",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.72.2"
+  }
+}

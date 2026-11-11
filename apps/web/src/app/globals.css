@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+/* Aurora 2026 — colors, type and shape from DESIGN.md. Flat: no radius, no shadow. */
+@theme {
+  --color-navy: #102a63;
+  --color-indigo: #2c539d;
+  --color-ciano: #00ade5;
+  --color-indigo-negativo: #5c7fd0;
+  --color-tinta: #0e1a33;
+  --color-grafite: #3a465e;
+  --color-ardosia: #56617a;
+  --color-rotulo: #64708a;
+  --color-bruma: #9fb0cc;
+  --color-nevoa: #c9d2de;
+  --color-fio: #e2e7ee;
+  --color-gelo: #f2f5f9;
+  --color-papel: #ffffff;
+  --color-sucesso: #0b6b45;
+  --color-sucesso-fundo: #e7f4ee;
+  --color-atencao: #8a5a1a;
+  --color-atencao-fundo: #fdf4e3;
+  --color-erro: #b03a3a;
+  --color-erro-fundo: #fbe9e9;
+
+  --font-sans: var(--font-plex-sans), Calibri, sans-serif;
+  --font-mono: var(--font-plex-mono), Consolas, monospace;
+
+  --radius-*: initial;
+  --shadow-*: initial;
+}
+
+@layer base {
+  html {
+    background: var(--color-papel);
+    color: var(--color-tinta);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    min-height: 100dvh;
+    line-height: 1.5;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-indigo);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* The one ornament: 5px bar, first 26% ciano, rest navy. */
+  .barra {
+    height: 5px;
+    background: linear-gradient(to right, var(--color-ciano) 26%, var(--color-navy) 26%);
+  }
+  /* Mono label: measures and field names only. 11px floor for screens. */
+  .rotulo {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-rotulo);
+  }
+  .dado {
+    font-family: var(--font-mono);
+    font-size: 0.9375rem;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    padding: 0 1.5rem;
+    font-weight: 600;
+    border: 1px solid var(--color-navy);
+    transition: background-color 120ms, color 120ms;
+  }
+  .btn-primario {
+    background: var(--color-navy);
+    color: var(--color-papel);
+  }
+  .btn-primario:hover {
+    background: var(--color-indigo);
+    border-color: var(--color-indigo);
+  }
+  .btn-secundario {
+    background: var(--color-papel);
+    color: var(--color-navy);
+  }
+  .btn-secundario:hover {
+    background: var(--color-gelo);
+  }
+  .btn[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
