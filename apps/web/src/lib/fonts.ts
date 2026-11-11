@@ -1,8 +1,6 @@
-import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "./globals.css";
 
-const plexSans = localFont({
+export const plexSans = localFont({
   variable: "--font-plex-sans",
   display: "swap",
   src: [
@@ -13,7 +11,7 @@ const plexSans = localFont({
   ],
 });
 
-const plexMono = localFont({
+export const plexMono = localFont({
   variable: "--font-plex-mono",
   display: "swap",
   src: [
@@ -21,16 +19,3 @@ const plexMono = localFont({
     { path: "../fonts/IBMPlexMono-Medium.ttf", weight: "500" },
   ],
 });
-
-export const metadata: Metadata = {
-  title: { default: "Aurora", template: "%s · Aurora" },
-  description: "Plataforma da Aurora Tecnologias para os dados e documentos das suas usinas.",
-};
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="pt-BR" className={`${plexSans.variable} ${plexMono.variable}`}>
-      <body>{children}</body>
-    </html>
-  );
-}

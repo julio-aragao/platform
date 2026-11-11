@@ -3,17 +3,17 @@ import { z } from "zod";
 export const PASSWORD_MIN_LENGTH = 8;
 
 export const signInInputSchema = z.object({
-  email: z.email("Informe um e-mail válido."),
-  password: z.string().min(1, "Informe a senha."),
+  email: z.email("validation.email.invalid"),
+  password: z.string({ error: "validation.password.required" }).min(1, "validation.password.required"),
 });
 export type SignInInput = z.infer<typeof signInInputSchema>;
 
 export const signUpInputSchema = z.object({
-  name: z.string().trim().min(2, "Informe seu nome."),
-  email: z.email("Informe um e-mail válido."),
+  name: z.string({ error: "validation.name.required" }).trim().min(2, "validation.name.required"),
+  email: z.email("validation.email.invalid"),
   password: z
-    .string()
-    .min(PASSWORD_MIN_LENGTH, `A senha precisa ter ao menos ${PASSWORD_MIN_LENGTH} caracteres.`),
+    .string({ error: "validation.password.required" })
+    .min(PASSWORD_MIN_LENGTH, "validation.password.tooShort"),
 });
 export type SignUpInput = z.infer<typeof signUpInputSchema>;
 

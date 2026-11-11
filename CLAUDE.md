@@ -29,4 +29,8 @@ All development follows **SOLID** and **DRY**. Apply them to new code and when t
 - Schema changes go through a Prisma migration. Never edit the database by hand. pg-boss owns its own `pgboss` schema.
 - Pin dependency versions exactly. Do not add `minimumReleaseAgeExclude` entries to `pnpm-workspace.yaml`.
 - Use Node 22 (`.nvmrc`). The Expo dev server does not run on older versions.
+- User-visible text lives only in catalogs (`apps/web/src/i18n/messages`, `packages/shared/src/i18n/catalogs`).
+- Page links and redirects go through `@/i18n/navigation`.
+- Adding a locale means adding its catalogs and a route-map entry, and registering it in the shared locale module (`LOCALES` and the helpers beside it).
+- Code, identifiers, internal route names and comments are English.
 - Run `pnpm lint && pnpm typecheck && pnpm test && pnpm build` before calling work done.

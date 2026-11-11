@@ -1,0 +1,84 @@
+{
+  "metadata": {
+    "description": "Plataforma da {company} para os dados e documentos das suas usinas."
+  },
+  "common": {
+    "brandHomeLabel": "Aurora, página inicial",
+    "accountNavLabel": "Conta",
+    "signIn": "Entrar",
+    "signUp": "Criar conta",
+    "signOut": "Sair",
+    "languageSwitcherLabel": "Idioma"
+  },
+  "notFound": {
+    "title": "Página não encontrada",
+    "text": "A página que você procura não existe ou foi movida.",
+    "back": "Voltar para a página inicial"
+  },
+  "home": {
+    "heroTitle": "Os dados de cada usina, num só lugar.",
+    "heroText": "A Aurora reúne documentos e informações técnicas das usinas para que sócios, advogados, financiadores e distribuidoras consultem a mesma versão.",
+    "pillarsTitle": "O que a plataforma reúne",
+    "pillars": {
+      "documents": {
+        "title": "Documentos no lugar certo",
+        "text": "Contratos, atas e procurações de cada usina ficam juntos, na versão que vale."
+      },
+      "technicalData": {
+        "title": "Dados técnicos em dia",
+        "text": "Potência, distribuidora e situação da usina, com a data da última atualização."
+      },
+      "access": {
+        "title": "Acesso só a quem precisa",
+        "text": "Sócios, advogados e financiadores entram com conta própria e veem o que lhes cabe."
+      }
+    },
+    "ctaTitle": "Crie sua conta e comece a consultar.",
+    "ctaText": "Use seu e-mail de trabalho. Leva menos de um minuto.",
+    "revision": "Aurora Platform · Revisão {date}"
+  },
+  "plantSheet": {
+    "title": "Ficha da usina",
+    "status": "Em operação",
+    "plantLabel": "Usina",
+    "powerLabel": "Potência",
+    "distributorLabel": "Distribuidora",
+    "lastReadingLabel": "Última leitura",
+    "plantName": "Usina Solar Exemplo I",
+    "distributorName": "Exemplo Energia",
+    "powerValue": "{value} kWp",
+    "caption": "Exemplo ilustrativo. Os dados reais aparecem no seu painel."
+  },
+  "auth": {
+    "fields": {
+      "name": "Nome",
+      "email": "E-mail",
+      "password": "Senha"
+    },
+    "signIn": {
+      "title": "Entrar",
+      "intro": "Use o e-mail e a senha da sua conta Aurora.",
+      "submit": "Entrar",
+      "pending": "Entrando…",
+      "footerPrompt": "Ainda não tem conta?",
+      "footerLink": "Criar conta"
+    },
+    "signUp": {
+      "title": "Criar conta",
+      "intro": "Leva menos de um minuto. A senha precisa ter ao menos {min} caracteres.",
+      "submit": "Criar conta",
+      "pending": "Criando conta…",
+      "footerPrompt": "Já tem conta?",
+      "footerLink": "Entrar"
+    }
+  },
+  "dashboard": {
+    "title": "Painel",
+    "greeting": "Olá, {name}",
+    "emptyTitle": "Nenhuma usina por aqui ainda",
+    "emptyText": "Sua conta está ativa. As usinas e os documentos vão aparecer neste painel assim que forem cadastrados."
+  },
+  "form": {
+    "errorLabel": "Erro:"
+  }
+}

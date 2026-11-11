@@ -1,0 +1,84 @@
+{
+  "metadata": {
+    "description": "The {company} platform for your plants' data and documents."
+  },
+  "common": {
+    "brandHomeLabel": "Aurora, home page",
+    "accountNavLabel": "Account",
+    "signIn": "Sign in",
+    "signUp": "Create account",
+    "signOut": "Sign out",
+    "languageSwitcherLabel": "Language"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "text": "The page you are looking for does not exist or has moved.",
+    "back": "Back to the home page"
+  },
+  "home": {
+    "heroTitle": "Every plant's data, in one place.",
+    "heroText": "Aurora brings together the documents and technical information of each plant, so that partners, lawyers, lenders and distribution companies all consult the same version.",
+    "pillarsTitle": "What the platform brings together",
+    "pillars": {
+      "documents": {
+        "title": "Documents in the right place",
+        "text": "Each plant's contracts, minutes and powers of attorney stay together, in the version that counts."
+      },
+      "technicalData": {
+        "title": "Technical data kept current",
+        "text": "Capacity, distribution company and plant status, with the date of the last update."
+      },
+      "access": {
+        "title": "Access only for those who need it",
+        "text": "Partners, lawyers and lenders sign in with their own account and see what concerns them."
+      }
+    },
+    "ctaTitle": "Create your account and start consulting.",
+    "ctaText": "Use your work email. It takes less than a minute.",
+    "revision": "Aurora Platform · Revision {date}"
+  },
+  "plantSheet": {
+    "title": "Plant data sheet",
+    "status": "In operation",
+    "plantLabel": "Plant",
+    "powerLabel": "Capacity",
+    "distributorLabel": "Distribution company",
+    "lastReadingLabel": "Last reading",
+    "plantName": "Example Solar Plant I",
+    "distributorName": "Example Energy",
+    "powerValue": "{value} kWp",
+    "caption": "Illustrative example. Your real data appears on your dashboard."
+  },
+  "auth": {
+    "fields": {
+      "name": "Name",
+      "email": "Email",
+      "password": "Password"
+    },
+    "signIn": {
+      "title": "Sign in",
+      "intro": "Use the email and password of your Aurora account.",
+      "submit": "Sign in",
+      "pending": "Signing in…",
+      "footerPrompt": "Don’t have an account yet?",
+      "footerLink": "Create account"
+    },
+    "signUp": {
+      "title": "Create account",
+      "intro": "It takes less than a minute. The password must be at least {min} characters long.",
+      "submit": "Create account",
+      "pending": "Creating account…",
+      "footerPrompt": "Already have an account?",
+      "footerLink": "Sign in"
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "greeting": "Hello, {name}",
+    "emptyTitle": "No plants here yet",
+    "emptyText": "Your account is active. Plants and documents will appear on this dashboard as soon as they are registered."
+  },
+  "form": {
+    "errorLabel": "Error:"
+  }
+}

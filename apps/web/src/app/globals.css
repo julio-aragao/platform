@@ -4,23 +4,23 @@
 @theme {
   --color-navy: #102a63;
   --color-indigo: #2c539d;
-  --color-ciano: #00ade5;
-  --color-indigo-negativo: #5c7fd0;
-  --color-tinta: #0e1a33;
-  --color-grafite: #3a465e;
-  --color-ardosia: #56617a;
-  --color-rotulo: #64708a;
-  --color-bruma: #9fb0cc;
-  --color-nevoa: #c9d2de;
-  --color-fio: #e2e7ee;
-  --color-gelo: #f2f5f9;
-  --color-papel: #ffffff;
-  --color-sucesso: #0b6b45;
-  --color-sucesso-fundo: #e7f4ee;
-  --color-atencao: #8a5a1a;
-  --color-atencao-fundo: #fdf4e3;
-  --color-erro: #b03a3a;
-  --color-erro-fundo: #fbe9e9;
+  --color-cyan: #00ade5;
+  --color-indigo-light: #5c7fd0;
+  --color-ink: #0e1a33;
+  --color-graphite: #3a465e;
+  --color-slate: #56617a;
+  --color-label: #64708a;
+  --color-haze: #9fb0cc;
+  --color-fog: #c9d2de;
+  --color-hairline: #e2e7ee;
+  --color-frost: #f2f5f9;
+  --color-paper: #ffffff;
+  --color-success: #0b6b45;
+  --color-success-bg: #e7f4ee;
+  --color-warning: #8a5a1a;
+  --color-warning-bg: #fdf4e3;
+  --color-error: #b03a3a;
+  --color-error-bg: #fbe9e9;
 
   --font-sans: var(--font-plex-sans), Calibri, sans-serif;
   --font-mono: var(--font-plex-mono), Consolas, monospace;
@@ -31,8 +31,8 @@
 
 @layer base {
   html {
-    background: var(--color-papel);
-    color: var(--color-tinta);
+    background: var(--color-paper);
+    color: var(--color-ink);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
@@ -47,20 +47,20 @@
 }
 
 @layer components {
-  /* The one ornament: 5px bar, first 26% ciano, rest navy. */
-  .barra {
+  /* The one ornament: 5px bar, first 26% cyan, rest navy. */
+  .bar {
     height: 5px;
-    background: linear-gradient(to right, var(--color-ciano) 26%, var(--color-navy) 26%);
+    background: linear-gradient(to right, var(--color-cyan) 26%, var(--color-navy) 26%);
   }
   /* Mono label: measures and field names only. 11px floor for screens. */
-  .rotulo {
+  .label {
     font-family: var(--font-mono);
     font-size: 0.6875rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--color-rotulo);
+    color: var(--color-label);
   }
-  .dado {
+  .data {
     font-family: var(--font-mono);
     font-size: 0.9375rem;
   }
@@ -74,20 +74,20 @@
     border: 1px solid var(--color-navy);
     transition: background-color 120ms, color 120ms;
   }
-  .btn-primario {
+  .btn-primary {
     background: var(--color-navy);
-    color: var(--color-papel);
+    color: var(--color-paper);
   }
-  .btn-primario:hover {
+  .btn-primary:hover {
     background: var(--color-indigo);
     border-color: var(--color-indigo);
   }
-  .btn-secundario {
-    background: var(--color-papel);
+  .btn-secondary {
+    background: var(--color-paper);
     color: var(--color-navy);
   }
-  .btn-secundario:hover {
-    background: var(--color-gelo);
+  .btn-secondary:hover {
+    background: var(--color-frost);
   }
   .btn[disabled] {
     opacity: 0.6;

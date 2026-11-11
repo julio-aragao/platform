@@ -1,26 +1,26 @@
 ---
 name: Aurora 2026
-description: Sistema de identidade da Aurora Tecnologias para documentos, apresentações, planilhas e marca.
+description: Identity system of Aurora Tecnologias (legal name: see Brand proper names) for documents, presentations, spreadsheets and brand.
 colors:
   navy: "#102A63"
   indigo: "#2C539D"
-  ciano: "#00ADE5"
-  indigo-negativo: "#5C7FD0"
-  tinta: "#0E1A33"
-  grafite: "#3A465E"
-  ardosia: "#56617A"
-  rotulo: "#64708A"
-  bruma: "#9FB0CC"
-  nevoa: "#C9D2DE"
-  fio: "#E2E7EE"
-  gelo: "#F2F5F9"
-  papel: "#FFFFFF"
-  sucesso: "#0B6B45"
-  sucesso-fundo: "#E7F4EE"
-  atencao: "#8A5A1A"
-  atencao-fundo: "#FDF4E3"
-  erro: "#B03A3A"
-  erro-fundo: "#FBE9E9"
+  cyan: "#00ADE5"
+  indigo-light: "#5C7FD0"
+  ink: "#0E1A33"
+  graphite: "#3A465E"
+  slate: "#56617A"
+  label: "#64708A"
+  haze: "#9FB0CC"
+  fog: "#C9D2DE"
+  hairline: "#E2E7EE"
+  frost: "#F2F5F9"
+  paper: "#FFFFFF"
+  success: "#0B6B45"
+  success-bg: "#E7F4EE"
+  warning: "#8A5A1A"
+  warning-bg: "#FDF4E3"
+  error: "#B03A3A"
+  error-bg: "#FBE9E9"
 typography:
   display:
     fontFamily: "IBM Plex Sans, Calibri, sans-serif"
@@ -53,147 +53,188 @@ typography:
 rounded:
   none: "0"
 spacing:
-  margem-lateral: "25mm"
-  margem-topo: "20mm"
-  margem-pe: "18mm"
-  margem-cartorio-esquerda: "30mm"
-  margem-cartorio-direita: "20mm"
-  mancha: "160mm"
+  margin-side: "25mm"
+  margin-top: "20mm"
+  margin-foot: "18mm"
+  margin-notary-left: "30mm"
+  margin-notary-right: "20mm"
+  text-block: "160mm"
 components:
-  barra-documento:
+  document-bar:
     backgroundColor: "{colors.navy}"
     height: "5px"
-  rotulo-documento:
+  document-label:
     textColor: "{colors.navy}"
     typography: "{typography.label}"
-  titulo-clausula:
+  clause-title:
     textColor: "{colors.navy}"
     typography: "{typography.headline}"
-  rodape:
-    textColor: "{colors.ardosia}"
+  footer:
+    textColor: "{colors.slate}"
     typography: "{typography.footer}"
-  estado-vencido:
-    backgroundColor: "{colors.erro-fundo}"
-    textColor: "{colors.erro}"
+  overdue-state:
+    backgroundColor: "{colors.error-bg}"
+    textColor: "{colors.error}"
 ---
 
 # Design System: Aurora 2026
 
-Revisão 10/2026. Fonte da verdade: as quatro folhas do Sistema Aurora 2026 e os arquivos em `AURORA 2026/`.
+Revision 10/2026. Source of truth: the four sheets of the Aurora 2026 System and the files in the brand folder.
 
 ## Overview
 
-**Creative North Star: "O papel timbrado que se lê no data room"**
+**Creative North Star: "The letterhead you read in the data room"**
 
-A Aurora fala com sócios, advogados, financiadores e distribuidoras. O sistema existe para que um contrato, uma ata ou uma ficha de usina pareçam da mesma empresa sólida, técnica e simples, impressos no cartório ou abertos em PDF numa due diligence. Quase tudo é papel: fundo branco, tinta navy, uma barra no topo e dados em fonte mono.
+Aurora speaks to partners, lawyers, financiers and distributors. The system exists so that a contract, minutes or a plant datasheet look like they come from the same company: solid, technical and simple, whether printed at the notary's office or opened as a PDF in due diligence. Almost everything is paper: white background, navy ink, a bar at the top and data in a mono font.
 
-A cor é economizada. O navy carrega a instituição; o ciano é um sinal, nunca um texto sobre fundo claro; o índigo completa o ícone. A tipografia é uma família só, IBM Plex, com a Mono reservada para o que é medida: CNPJ, data, potência, valor, código de ativo.
+Colour is used sparingly. Navy carries the institution; cyan is a signal, never text on a light background; indigo completes the icon. Typography is a single family, IBM Plex, with Mono reserved for what is measured: company tax ID (CNPJ), date, power, value, asset code.
 
-O sistema foi feito para durar fora da Aurora: modelos de Word, PowerPoint e Excel que mantêm a identidade quando alguém cria um título, um gráfico ou uma coluna nova, porque o tema e os estilos já são os da marca.
+The system is built to last outside Aurora: Word, PowerPoint and Excel templates that keep the identity when someone creates a new title, chart or column, because the theme and styles are already the brand's.
 
 **Key Characteristics:**
-- Uma marca, dois descritores (Tecnologias e Pesquisa e Desenvolvimento), uma reduzida
-- Papel branco, tinta navy, um único ornamento: a barra navy e ciano
-- IBM Plex Sans para texto, IBM Plex Mono para dados
-- Contraste de leitura em todo texto, inclusive rótulos e rodapés
-- Nenhum arredondamento, nenhuma sombra
+- One brand, two descriptors (see Brand proper names), one reduced version
+- White paper, navy ink, a single ornament: the navy and cyan bar
+- IBM Plex Sans for text, IBM Plex Mono for data
+- Reading contrast on all text, including labels and footers
+- No rounding, no shadows
 
 ## Colors
 
-Navy institucional, um índigo de apoio, um ciano de sinal e uma escala de neutros azulados.
+Institutional navy, a supporting indigo, a signal cyan and a scale of bluish neutrals.
 
 ### Primary
-- **Navy Aurora** (#102A63): cor institucional. Títulos, wordmark, cabeçalho de tabela, fundo de capa e contracapa. 13,5:1 no branco.
+- **Aurora Navy** `navy` (#102A63): institutional colour. Titles, wordmark, table header, cover and back-cover background. 13.5:1 on white.
 
 ### Secondary
-- **Índigo** (#2C539D): metade do ícone. Links, segunda série de gráfico, números de etapa. 7,4:1 no branco.
-- **Índigo claro** (#5C7FD0): só na negativa, no lugar do índigo sobre navy (3,5:1), e em número grande de divisória.
+- **Indigo** `indigo` (#2C539D): half of the icon. Links, second chart series, step numbers. 7.4:1 on white.
+- **Light indigo** `indigo-light` (#5C7FD0): only in the negative version, in place of indigo on navy (3.5:1), and in large divider numbers.
 
 ### Tertiary
-- **Ciano** (#00ADE5): a barra, o fio, o realce, a primeira série de linha. Em texto, só sobre navy (5,3:1).
+- **Cyan** `cyan` (#00ADE5): the bar, the hairline, the highlight, the first line series. As text, only on navy (5.3:1).
 
 ### Neutral
-- **Tinta** (#0E1A33): corpo de texto. 17,3:1.
-- **Grafite** (#3A465E): texto de apoio nas telas.
-- **Ardósia** (#56617A): texto secundário e rodapé. 6,2:1.
-- **Rótulo** (#64708A): rótulos e numeração; o cinza mais claro permitido em texto. 5,0:1 no papel, 4,5:1 no gelo.
-- **Bruma** (#9FB0CC): texto secundário sobre navy. 6,2:1.
-- **Névoa** (#C9D2DE): fio forte, tracejado, linha de testemunha.
-- **Fio** (#E2E7EE): fios e divisórias.
-- **Gelo** (#F2F5F9): fundo de tabela, cartão e prancha.
-- **Papel** (#FFFFFF).
+- **Ink** `ink` (#0E1A33): body text. 17.3:1.
+- **Graphite** `graphite` (#3A465E): supporting text on screens.
+- **Slate** `slate` (#56617A): secondary text and footer. 6.2:1.
+- **Label** `label` (#64708A): labels and numbering; the lightest grey allowed for text. 5.0:1 on paper, 4.5:1 on frost.
+- **Haze** `haze` (#9FB0CC): secondary text on navy. 6.2:1.
+- **Fog** `fog` (#C9D2DE): strong hairline, dashes, witness line.
+- **Hairline** `hairline` (#E2E7EE): rules and dividers.
+- **Frost** `frost` (#F2F5F9): table, card and board background.
+- **Paper** `paper` (#FFFFFF).
 
-### Estados
-- **Sucesso** (#0B6B45 sobre #E7F4EE), **Atenção** (#8A5A1A sobre #FDF4E3), **Erro** (#B03A3A sobre #FBE9E9): só para situação (prazo, pendência, documento do data room), sempre com a palavra junto.
+### States
+- **Success** `success` (#0B6B45 on #E7F4EE), **Warning** `warning` (#8A5A1A on #FDF4E3), **Error** `error` (#B03A3A on #FBE9E9): only for status (deadline, pending item, data room document), always with the word alongside.
+
+### Brand colour names (pt-BR)
+
+The brand kit names the colours in Portuguese. This table maps each English token to its brand-kit name.
+
+<!-- i18n-guard:ignore-start -->
+| Token | Brand-kit name (pt-BR) |
+| --- | --- |
+| `navy` | navy |
+| `indigo` | índigo |
+| `cyan` | ciano |
+| `indigo-light` | índigo claro |
+| `ink` | tinta |
+| `graphite` | grafite |
+| `slate` | ardósia |
+| `label` | rótulo |
+| `haze` | bruma |
+| `fog` | névoa |
+| `hairline` | fio |
+| `frost` | gelo |
+| `paper` | papel |
+| `success` | sucesso |
+| `success-bg` | sucesso-fundo |
+| `warning` | atenção |
+| `warning-bg` | atenção-fundo |
+| `error` | erro |
+| `error-bg` | erro-fundo |
+<!-- i18n-guard:ignore-end -->
+
+### Brand proper names
+
+Company and brand names are not translated. They appear here verbatim, as in the brand kit.
+
+<!-- i18n-guard:ignore-start -->
+| Name | Use |
+| --- | --- |
+| Aurora Tecnologias | Brand name with the first descriptor |
+| Tecnologias | First descriptor |
+| Pesquisa e Desenvolvimento | Second descriptor |
+| Energias Renováveis | Legal-name suffix (razão social); goes in the footer, never inside the logo |
+<!-- i18n-guard:ignore-end -->
 
 ### Named Rules
-**The Ciano-Sinal Rule.** O ciano nunca é texto sobre fundo claro (2,6:1) e nunca recebe texto branco. Sobre navy, pode.
-**The Rótulo Rule.** Nenhum texto usa cinza mais claro que #64708A. O antigo #8A94A8 saiu do sistema.
-**The Faixa Tonal Rule.** O fundo nunca fica na mesma faixa tonal da marca: sobre ciano, só a monocromática navy; sobre navy, a negativa com índigo claro.
+**The Cyan-Signal Rule.** Cyan is never text on a light background (2.6:1) and never receives white text. On navy, it may.
+**The Label Rule.** No text uses a grey lighter than #64708A. The former #8A94A8 has left the system.
+**The Tonal Band Rule.** The background never sits in the same tonal band as the brand: on cyan, only the monochrome navy; on navy, the negative with light indigo.
 
 ## Typography
 
 **Body Font:** IBM Plex Sans (fallback Calibri)
 **Label/Mono Font:** IBM Plex Mono (fallback Consolas)
 
-**Character:** uma família técnica e neutra, com números de altura uniforme que alinham tabelas de CNPJ e potência. Licença SIL OFL: instalável e incorporável sem custo.
+**Character:** a technical, neutral family with uniform-height numerals that align tables of tax IDs and power. SIL OFL licence: installable and embeddable at no cost.
 
 ### Hierarchy
-- **Display** (Regular 400, 20 pt, 1,2): título do documento, em navy.
-- **Headline** (Bold, 11 pt, caixa-alta): título de cláusula, estilo "Título 1" do Word.
-- **Body** (Regular 400, 11 pt, entrelinha 1,5, justificado): corpo de contrato, estilo "Normal".
-- **Data** (Mono 400, 9–10 pt): numeração de item, CNPJ, valores, códigos.
-- **Label** (Mono 400, 8 pt, 0,14 em, caixa-alta): rótulo do documento e rótulos de campo, em navy ou #64708A.
-- **Footer** (Regular 400, 8 pt): rodapé e numeração, em #56617A.
+- **Display** (Regular 400, 20 pt, 1.2): document title, in navy.
+- **Headline** (Bold, 11 pt, uppercase): clause title, Word style "Heading 1".
+- **Body** (Regular 400, 11 pt, line height 1.5, justified): contract body, style "Normal".
+- **Data** (Mono 400, 9–10 pt): item numbering, tax IDs, values, codes.
+- **Label** (Mono 400, 8 pt, 0.14 em, uppercase): document label and field labels, in navy or #64708A.
+- **Footer** (Regular 400, 8 pt): footer and numbering, in #56617A.
 
 ### Named Rules
-**The 8 pt Floor Rule.** Nenhum texto de documento fica abaixo de 8 pt; nenhum texto de tela fica abaixo de 11 px.
-**The Mono-É-Medida Rule.** A Mono só aparece em dado, código e rótulo técnico, nunca como enfeite.
+**The 8 pt Floor Rule.** No document text falls below 8 pt; no screen text falls below 11 px.
+**The Mono-Is-Measure Rule.** Mono appears only in data, codes and technical labels, never as decoration.
 
 ## Layout
 
-A4 retrato. Margens de 25 mm nas laterais, 20 mm no topo e 18 mm no pé. Contrato, ata e procuração, que vão a cartório, usam 30 mm à esquerda e 20 mm à direita; a mancha continua com 160 mm. Primeira página com a assinatura completa de 72 mm sob a barra; páginas internas com a reduzida de 30 mm à esquerda e a identificação do documento à direita, sobre um fio. Rodapé em duas linhas: razão social e CNPJ com a numeração `página / total`; endereço e site com a referência do modelo e a revisão.
+A4 portrait. Margins of 25 mm on the sides, 20 mm at the top and 18 mm at the foot. Contracts, minutes and powers of attorney, which go to the notary's office, use 30 mm on the left and 20 mm on the right; the text block stays at 160 mm. The first page carries the full 72 mm signature under the bar; inner pages carry the 30 mm reduced version on the left and the document identification on the right, over a hairline. Footer on two lines: company name and tax ID (CNPJ) with the `page / total` numbering; address and website with the template reference and the revision.
 
-Slides 16:9 com nove layouts no Slide Master. Planilha com cabeçalho navy, painéis congelados e impressão ajustada à largura, em paisagem nas abas largas.
+Slides are 16:9 with nine layouts in the Slide Master. Spreadsheets have a navy header, frozen panes and print fitted to width, in landscape on the wide tabs.
 
 ## Elevation & Depth
 
-Plano. Nenhuma sombra. A profundidade vem de tom (gelo sob papel, navy sob texto claro) e de fios de 1 px.
+Flat. No shadows. Depth comes from tone (frost under paper, navy under light text) and from 1 px hairlines.
 
 ## Shapes
 
-Ângulo reto em tudo. A única forma recorrente é o paralelogramo do ícone; nada a imita. A barra de documento tem 5 px, com os primeiros 26% em ciano.
+Right angles everywhere. The only recurring shape is the icon's parallelogram; nothing imitates it. The document bar is 5 px, with the first 26% in cyan.
 
 ## Components
 
-### Marca
-- **Assinatura completa:** ícone bicolor, wordmark e descritor alinhado à direita do wordmark, com altura (4% da largura do wordmark) e entreletras (0,33 em) fixos. Só a partir de 72 mm ou 360 px.
-- **Reduzida:** ícone e wordmark, de 12 a 72 mm ou de 48 a 360 px.
-- **Ícone:** abaixo de 12 mm ou 48 px; avatar e favicon.
-- **Respiro:** a altura do ícone em todos os lados.
-- **Arquivos:** `Marca/` (SVG e PNG), `Marca/PDF/` (vetor para gráfica), `Marca/Web/` (avatar, favicon).
+### Brand
+- **Full signature:** two-colour icon, wordmark and descriptor aligned to the right of the wordmark, with fixed height (4% of the wordmark width) and letter spacing (0.33 em). Only from 72 mm or 360 px.
+- **Reduced:** icon and wordmark, from 12 to 72 mm or from 48 to 360 px.
+- **Icon:** below 12 mm or 48 px; avatar and favicon.
+- **Clear space:** the height of the icon on all sides.
+- **Files:** the brand folder holds SVG and PNG, a PDF subfolder (vector for print) and a web subfolder (avatar, favicon).
 
-### Cabeçalho de documento
-- **Primeira página:** barra navy e ciano; assinatura de 72 mm.
-- **Internas:** reduzida de 30 mm à esquerda; identificação em Mono 8 pt #64708A à direita; fio #E2E7EE.
+### Document header
+- **First page:** navy and cyan bar; 72 mm signature.
+- **Inner pages:** 30 mm reduced version on the left; identification in Mono 8 pt #64708A on the right; hairline #E2E7EE.
 
-### Campo a preencher
-- Texto entre colchetes dentro de um controle de conteúdo do Word: um clique seleciona o campo inteiro e a digitação substitui o texto sem desmanchar a formatação.
+### Fill-in field
+- Text in square brackets inside a Word content control: one click selects the whole field and typing replaces the text without breaking the formatting.
 
-### Bloco de assinatura
-- Fecho, local e data, assinaturas e testemunhas numa tabela só, com linhas que não se dividem e "manter com o próximo" até o fim; leva junto o último parágrafo de texto.
+### Signature block
+- Closing, place and date, signatures and witnesses in a single table, with rows that do not split and "keep with next" through the end; it carries the last paragraph of text along.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** usar os modelos de `Templates/` como ponto de partida; tema e estilos já são os da marca.
-- **Do** aplicar "Título 1" às cláusulas e "Item de cláusula" aos itens numerados.
-- **Do** usar #64708A ou mais escuro em qualquer rótulo.
-- **Do** reexportar PNGs a partir do SVG com o viewBox inteiro.
+- **Do** use the templates in the templates folder as a starting point; the theme and styles are already the brand's.
+- **Do** apply "Heading 1" to clauses and "Clause Item" to numbered items.
+- **Do** use #64708A or darker on any label.
+- **Do** re-export PNGs from the SVG with the whole viewBox.
 
 ### Don't:
-- **Don't** pôr texto ciano sobre branco ou fundo claro.
-- **Don't** usar a assinatura com descritor abaixo de 72 mm ou 360 px.
-- **Don't** recolorir o ícone fora das versões do kit (positiva, negativa, monocromática).
-- **Don't** pôr "Energias Renováveis" dentro do logo: é razão social, vai no rodapé.
-- **Don't** deixar uma página só com assinaturas.
+- **Don't** put cyan text on white or a light background.
+- **Don't** use the signature with descriptor below 72 mm or 360 px.
+- **Don't** recolour the icon outside the kit's versions (positive, negative, monochrome).
+- **Don't** put the legal-name suffix (see Brand proper names) inside the logo: it is the company's legal name and goes in the footer.
+- **Don't** leave a page with only signatures.

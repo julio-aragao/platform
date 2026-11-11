@@ -1,6 +1,13 @@
 import type { Context } from "hono";
 import type { ContentfulStatusCode } from "hono/utils/http-status";
-import type { ErrorCode, ErrorResponse } from "@aurora/shared";
+import {
+  errorCodeMessageKey,
+  localizeMessage,
+  type ErrorCode,
+  type ErrorResponse,
+  type MessageKey,
+} from "@aurora/shared";
+import { requestLocale } from "./locale";
 
 const STATUS_CODES: Record<ErrorCode, ContentfulStatusCode> = {
   bad_request: 400,
@@ -13,14 +20,17 @@ const STATUS_CODES: Record<ErrorCode, ContentfulStatusCode> = {
 export class ApiError extends Error {
   constructor(
     readonly code: ErrorCode,
-    message: string,
+    messageKey: MessageKey = errorCodeMessageKey[code],
   ) {
-    super(message);
+    super(messageKey);
   }
 }
 
-/** The one place that builds the shared `{error: {code, message}}` response. */
-export function errorResponse(c: Context, code: ErrorCode, message: string) {
-  const body: ErrorResponse = { error: { code, message } };
+/** The one place that builds the shared `{error: {code, message}}` response, translated per request. */
+export function errorResponse(c: Context, code: ErrorCode, messageKey?: MessageKey) {
+  const key = messageKey ?? errorCodeMessageKey[code];
+  const body: ErrorResponse = {
+    error: { code, message: localizeMessage(requestLocale(c), key, errorCodeMessageKey[code]) },
+  };
   return c.json(body, STATUS_CODES[code]);
 }
