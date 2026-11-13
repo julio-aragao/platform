@@ -16,21 +16,21 @@
     "back": "Voltar para a página inicial"
   },
   "home": {
-    "heroTitle": "Os dados de cada usina, num só lugar.",
-    "heroText": "A Aurora reúne documentos e informações técnicas das usinas para que sócios, advogados, financiadores e distribuidoras consultem a mesma versão.",
-    "pillarsTitle": "O que a plataforma reúne",
+    "heroTitle": "Economize com energia renovável.",
+    "heroText": "A Aurora ajuda você a alavancar sua empresa economizando energia.",
+    "pillarsTitle": "Quais os benefícios?",
     "pillars": {
-      "documents": {
-        "title": "Documentos no lugar certo",
-        "text": "Contratos, atas e procurações de cada usina ficam juntos, na versão que vale."
+      "pillar1": {
+        "title": "Economia na conta de energia",
+        "text": "Receba um desconto na sua conta de energia ao fazer uma parceria com uma usina Aurora"
       },
-      "technicalData": {
-        "title": "Dados técnicos em dia",
-        "text": "Potência, distribuidora e situação da usina, com a data da última atualização."
+      "pillar2": {
+        "title": "Benefício 2",
+        "text": "Descreva aqui o benefício 2."
       },
-      "access": {
-        "title": "Acesso só a quem precisa",
-        "text": "Sócios, advogados e financiadores entram com conta própria e veem o que lhes cabe."
+      "pillar3": {
+        "title": "Benefício 3",
+        "text": "Descreva aqui o benefício 3."
       }
     },
     "ctaTitle": "Crie sua conta e comece a consultar.",

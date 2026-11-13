@@ -11,7 +11,7 @@ import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { COMPANY_NAME } from "@/lib/company";
 
-const PILLARS = ["documents", "technicalData", "access"] as const;
+const PILLARS = ["pillar1", "pillar2", "pillar3"] as const;
 const REVISION_DATE = new Date("2026-11-01T00:00:00Z");
 
 export async function generateMetadata({ params }: PageProps<"/[locale]">): Promise<Metadata> {
