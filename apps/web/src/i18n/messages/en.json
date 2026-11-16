@@ -8,7 +8,11 @@
     "signIn": "Sign in",
     "signUp": "Create account",
     "signOut": "Sign out",
-    "languageSwitcherLabel": "Language"
+    "languageSwitcherLabel": "Language",
+    "landing": {
+      "signUp": "Save",
+      "signIn": "Sign In"
+    }
   },
   "notFound": {
     "title": "Page not found",
@@ -16,38 +20,38 @@
     "back": "Back to the home page"
   },
   "home": {
-    "heroTitle": "Every plant's data, in one place.",
-    "heroText": "Aurora brings together the documents and technical information of each plant, so that partners, lawyers, lenders and distribution companies all consult the same version.",
+    "heroTitle": "Save with renewable energy.",
+    "heroText": "Aurora helps you leverage your business saving with your power bill.",
     "pillarsTitle": "What the platform brings together",
     "pillars": {
-      "documents": {
-        "title": "Documents in the right place",
-        "text": "Each plant's contracts, minutes and powers of attorney stay together, in the version that counts."
+      "pillar1": {
+        "title": "Savings in electrical bill",
+        "text": "Get a discount in your electrical bill by partnering with an Aurora plant"
       },
-      "technicalData": {
-        "title": "Technical data kept current",
-        "text": "Capacity, distribution company and plant status, with the date of the last update."
+      "pillar2": {
+        "title": "Benefit 2",
+        "text": "Describe benefit 2."
       },
-      "access": {
-        "title": "Access only for those who need it",
-        "text": "Partners, lawyers and lenders sign in with their own account and see what concerns them."
+      "pillar3": {
+        "title": "Benefit 3",
+        "text": "Describe benefit 3."
       }
     },
-    "ctaTitle": "Create your account and start consulting.",
+    "ctaTitle": "Sign Up and start saving.",
     "ctaText": "Use your work email. It takes less than a minute.",
     "revision": "Aurora Platform · Revision {date}"
   },
-  "plantSheet": {
+  "infoSheet": {
     "title": "Plant data sheet",
     "status": "In operation",
-    "plantLabel": "Plant",
-    "powerLabel": "Capacity",
-    "distributorLabel": "Distribution company",
-    "lastReadingLabel": "Last reading",
-    "plantName": "Example Solar Plant I",
-    "distributorName": "Example Energy",
-    "powerValue": "{value} kWp",
-    "caption": "Illustrative example. Your real data appears on your dashboard."
+    "label1": "Plant",
+    "label2": "Capacity",
+    "label3": "Distribution company",
+    "label4": "Last reading",
+    "label5": "Example Solar Plant I",
+    "label6": "Example Energy",
+    "label7": "{value} kWp",
+    "caption1": "Illustrative example. The data above are only an example of a data section."
   },
   "auth": {
     "fields": {

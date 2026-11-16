@@ -1,22 +1,21 @@
 import { useLocale, useTranslations } from "next-intl";
 import { formatNumber, formatShortDate } from "@/i18n/format";
 
-/** A Brazilian company identifier: the label and the example number read the same in every language. */
 const CNPJ_LABEL = "CNPJ";
 const EXAMPLE_CNPJ = "00.000.000/0001-00";
 const EXAMPLE_POWER_KWP = 1250;
 const EXAMPLE_LAST_READING = new Date("2026-11-11T00:00:00Z");
 
-/** An illustrative plant data sheet: the page's one memorable element. Mono is for measures only. */
-export function PlantSheet() {
-  const t = useTranslations("plantSheet");
+/** An illustrative info sheet: the page's one memorable element. Mono is for measures only. */
+export function InfoSheet() {
+  const t = useTranslations("infoSheet");
   const locale = useLocale();
   const rows = [
-    { label: t("plantLabel"), value: t("plantName") },
+    { label: t("label1"), value: t("label1") },
     { label: CNPJ_LABEL, value: EXAMPLE_CNPJ },
-    { label: t("powerLabel"), value: t("powerValue", { value: formatNumber(locale, EXAMPLE_POWER_KWP) }) },
-    { label: t("distributorLabel"), value: t("distributorName") },
-    { label: t("lastReadingLabel"), value: formatShortDate(locale, EXAMPLE_LAST_READING) },
+    { label: t("label2"), value: t("label7", { value: formatNumber(locale, EXAMPLE_POWER_KWP) }) },
+    { label: t("label3"), value: t("label3") },
+    { label: t("label4"), value: formatShortDate(locale, EXAMPLE_LAST_READING) },
   ];
 
   return (
@@ -36,7 +35,7 @@ export function PlantSheet() {
           </div>
         ))}
       </dl>
-      <figcaption className="border-t border-hairline px-5 py-3 text-sm text-slate">{t("caption")}</figcaption>
+      <figcaption className="border-t border-hairline px-5 py-3 text-sm text-slate">{t("caption1")}</figcaption>
     </figure>
   );
 }

@@ -1,7 +1,7 @@
 export const pathnames = {
   "/": "/",
-  "/sign-in": { en: "/sign-in", "pt-br": "/entrar" },
-  "/sign-up": { en: "/sign-up", "pt-br": "/criar-conta" },
+  "/admin-sign-in": { en: "/admin-sign-in", "pt-br": "/adm-entrar" },
+  "/admin-sign-up": { en: "/admin-sign-up", "pt-br": "/criar-conta-adm" },
   "/dashboard": { en: "/dashboard", "pt-br": "/painel" },
 } as const;
 

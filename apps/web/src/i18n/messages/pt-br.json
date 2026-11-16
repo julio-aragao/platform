@@ -8,7 +8,11 @@
     "signIn": "Entrar",
     "signUp": "Criar conta",
     "signOut": "Sair",
-    "languageSwitcherLabel": "Idioma"
+    "languageSwitcherLabel": "Idioma",
+    "landing": {
+      "signUp": "Economizar",
+      "signIn": "Entrar"
+    }
   },
   "notFound": {
     "title": "Página não encontrada",
@@ -17,7 +21,7 @@
   },
   "home": {
     "heroTitle": "Economize com energia renovável.",
-    "heroText": "A Aurora ajuda você a alavancar sua empresa economizando energia.",
+    "heroText": "A Aurora ajuda você a alavancar seu negócio economizando na sua conta de energia.",
     "pillarsTitle": "Quais os benefícios?",
     "pillars": {
       "pillar1": {
@@ -33,21 +37,21 @@
         "text": "Descreva aqui o benefício 3."
       }
     },
-    "ctaTitle": "Crie sua conta e comece a consultar.",
+    "ctaTitle": "Crie sua conta e comece a economizar.",
     "ctaText": "Use seu e-mail de trabalho. Leva menos de um minuto.",
     "revision": "Aurora Platform · Revisão {date}"
   },
-  "plantSheet": {
+  "infoSheet": {
     "title": "Ficha da usina",
     "status": "Em operação",
-    "plantLabel": "Usina",
-    "powerLabel": "Potência",
-    "distributorLabel": "Distribuidora",
-    "lastReadingLabel": "Última leitura",
-    "plantName": "Usina Solar Exemplo I",
-    "distributorName": "Exemplo Energia",
-    "powerValue": "{value} kWp",
-    "caption": "Exemplo ilustrativo. Os dados reais aparecem no seu painel."
+    "label1": "Usina",
+    "label2": "Potência",
+    "label3": "Distribuidora",
+    "label4": "Última leitura",
+    "label5": "Usina Solar Exemplo I",
+    "label6": "Exemplo Energia",
+    "label7": "{value} kWp",
+    "caption1": "Exemplo ilustrativo. Os dados reais acima ilustram apenas uma seção de dados."
   },
   "auth": {
     "fields": {

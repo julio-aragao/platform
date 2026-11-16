@@ -4,7 +4,7 @@ import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Brand } from "@/components/brand";
 import { LanguageSwitcher } from "@/components/language-switcher";
-import { PlantSheet } from "@/components/plant-sheet";
+import { InfoSheet } from "@/components/info-sheet";
 import { formatMonthYear } from "@/i18n/format";
 import { pageMetadata } from "@/i18n/metadata";
 import { Link } from "@/i18n/navigation";
@@ -26,6 +26,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
   setRequestLocale(locale);
   const t = await getTranslations("home");
   const common = await getTranslations("common");
+  const landing = await getTranslations("common.landing");
 
   return (
     <div className="min-h-dvh">
@@ -38,10 +39,10 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             <LanguageSwitcher />
             <nav aria-label={common("accountNavLabel")} className="flex items-center gap-2 sm:gap-3">
               <Link href="/sign-in" className="btn btn-secondary">
-                {common("signIn")}
+                {landing("signIn")}
               </Link>
               <Link href="/sign-up" className="btn btn-primary">
-                {common("signUp")}
+                {landing("signUp")}
               </Link>
             </nav>
           </div>
@@ -57,14 +58,14 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             <p className="max-w-[52ch] text-lg text-graphite">{t("heroText")}</p>
             <div className="flex flex-wrap gap-3 pt-2">
               <Link href="/sign-up" className="btn btn-primary">
-                {common("signUp")}
+                {landing("signUp")}
               </Link>
               <Link href="/sign-in" className="btn btn-secondary">
-                {common("signIn")}
+                {landing("signIn")}
               </Link>
             </div>
           </div>
-          <PlantSheet />
+          <InfoSheet />
         </section>
 
         <section aria-labelledby="pillars-heading" className="border-t border-hairline bg-frost">
@@ -94,7 +95,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
               <p className="max-w-[48ch] text-haze">{t("ctaText")}</p>
             </div>
             <Link href="/sign-up" className="btn border-paper bg-paper text-navy hover:bg-frost">
-              {common("signUp")}
+              {landing("signUp")}
             </Link>
           </div>
         </section>
