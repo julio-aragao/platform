@@ -27,6 +27,7 @@ pnpm install
 cp .env.example .env          # skip if you already have a .env
 pnpm db:up                    # starts PostgreSQL 17 in Docker on port 5432
 pnpm db:migrate               # applies the Prisma migrations
+pnpm db:seed                  # inserts the i18n messages (see Database)
 pnpm dev                      # runs the API and the web app together
 ```
 
@@ -45,7 +46,7 @@ All variables are listed in `.env.example`. `.env` is git-ignored.
 |---|---|---|
 | `DATABASE_URL` | api | PostgreSQL connection string (matches `docker-compose.yml`) |
 | `API_PORT` | api | Port the API listens on (default `4000`) |
-| `WEB_ORIGIN` | api, web | Origin the browser uses (`http://localhost:3000`). The web app reads it at build time for canonical and `hreflang` links |
+| `WEB_ORIGIN` | api, web | Origin the browser uses (`http://localhost:3000`). The web app reads it when rendering pages, for canonical and `hreflang` links |
 | `BETTER_AUTH_URL` | api | Public URL of the auth endpoints |
 | `BETTER_AUTH_SECRET` | api | Auth secret, 32 characters or more. Generate one with `openssl rand -base64 32` |
 | `API_URL` | web | Where the web app proxies `/api` to (`http://localhost:4000`) |
@@ -67,7 +68,7 @@ Before calling any work done, run the full gate:
 pnpm lint && pnpm typecheck && pnpm test && pnpm build
 ```
 
-`pnpm test` also runs two repository guards: the catalog parity test (every language has the same keys) and the Portuguese guard (no Portuguese outside the translation files).
+`pnpm test` also runs two repository guards: the catalog parity tests in `packages/shared` (every language has the same keys) and the Portuguese guard in `apps/web` (no Portuguese outside the translation files).
 
 ## Build and run for production
 
@@ -77,7 +78,11 @@ pnpm --filter @aurora/api start    # node dist/index.js
 pnpm --filter @aurora/web start    # next start, port 3000
 ```
 
-Set `WEB_ORIGIN` to the real public origin before building the web app. Pages are prerendered, so the value is baked in at build time.
+Set `WEB_ORIGIN` to the real public origin for the web app. Pages render on demand, so the value is read at runtime.
+
+Deploy in this order: `pnpm db:deploy` (migrations), then `pnpm db:seed` (messages), then start or restart the API. Pages need the API up and the `i18n_message` table populated, because the web app fetches its messages from the API on every request.
+
+Run a single API instance. Messages are cached in the API's memory, so a running API keeps what it loaded until it restarts: restart it after seeding or after editing rows in `i18n_message`.
 
 ## Languages
 
@@ -96,15 +101,18 @@ Where text lives:
 
 | What | Where |
 |---|---|
-| Page and component copy | `apps/web/src/i18n/messages/{en,pt-br}.json` |
-| Validation, API and auth error messages | `packages/shared/src/i18n/catalogs/` |
+| Messages at runtime (all of them) | The `i18n_message` table in PostgreSQL |
+| Page and component copy, seed input | `packages/shared/src/i18n/catalogs/web/{en,pt-br}.json` |
+| Validation, API and auth error messages, seed input | `packages/shared/src/i18n/catalogs/{en,pt-br}.ts` |
 | Locale list, negotiation | `packages/shared/src/i18n/locales.ts` |
+
+The files under `catalogs/` are only seed input: `pnpm db:seed` copies them into the table, and nothing reads them while the apps run. To change a text in a running environment, edit its row in `i18n_message` and restart the API. Message rows are data, so they may be edited directly until the edit page exists.
 
 Rules to keep:
 
-- Never hard-code user-visible text. Add a key to **both** catalogs; the parity test fails if they differ.
+- Never hard-code user-visible text. Add a key to **both** languages in the catalog files, then run `pnpm db:seed` to insert it and restart a running API so it picks the new rows up; the parity tests fail if the languages differ.
 - Build links and redirects with `Link`/`redirect`/`useRouter` from `@/i18n/navigation`, never from `next/link` or `next/navigation` (ESLint enforces this).
-- To add a language: add its catalogs, add its slugs to `pathnames.ts`, and register it in the shared locale module (`LOCALES` and the helpers beside it).
+- To add a language: add its catalogs, add its slugs to `pathnames.ts`, and register it in the shared locale module (`LOCALES` and the helpers beside it). Then run `pnpm db:seed` and restart the API. A locale without seed rows makes its pages fail with "API returned no messages".
 
 ## Database
 
@@ -114,10 +122,13 @@ PostgreSQL runs in Docker (`docker-compose.yml`, user, password and database all
 pnpm db:up        # start the database
 pnpm db:migrate   # create and apply a migration in development (prisma migrate dev)
 pnpm db:deploy    # apply existing migrations (prisma migrate deploy), for CI and production
+pnpm db:seed      # insert the i18n messages into the i18n_message table
 docker compose stop db   # stop it; the data stays in the pgdata volume
 ```
 
-Schema changes always go through a Prisma migration (`apps/api/prisma/schema.prisma`). Never edit the database by hand.
+Run `pnpm db:seed` after `pnpm db:migrate`. It is a setup step: the web and mobile apps read their messages from the `i18n_message` table, so the table must be filled before they show text. The seed is insert-only: it adds rows that are missing and never updates or deletes existing ones, so messages edited in the database survive. New message keys reach an environment by running the seed again there. The command builds `@aurora/shared` and generates the Prisma client itself, so nothing else is needed first.
+
+Schema changes always go through a Prisma migration (`apps/api/prisma/schema.prisma`). Never change the schema by hand. Message rows in `i18n_message` are data and may be edited directly until the edit page exists.
 
 ## Troubleshooting
 

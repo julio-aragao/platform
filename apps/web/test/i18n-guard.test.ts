@@ -38,7 +38,6 @@ const SKIPPED_DIRS = new Set(["node_modules", "dist", "generated", "docs"]);
 const SKIPPED_PATHS = new Set([
   "pnpm-lock.yaml",
   "apps/api/prisma/migrations",
-  "apps/web/src/i18n/messages",
   "apps/web/src/i18n/pathnames.ts",
   // The guard itself, and tests asserting Portuguese route slugs (translation data).
   "apps/web/test/i18n-guard.test.ts",

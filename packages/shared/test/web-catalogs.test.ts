@@ -1,14 +1,9 @@
-import { DEFAULT_LOCALE, LOCALES, type Locale } from "@aurora/shared";
 import { describe, expect, it } from "vitest";
-import en from "../src/i18n/messages/en.json";
+import { DEFAULT_LOCALE, LOCALES, webCatalogs, type Locale, type MessageTree } from "../src/i18n";
 
-async function loadCatalog(locale: Locale): Promise<Tree> {
-  return (await import(`../src/i18n/messages/${locale}.json`)).default as Tree;
-}
+const en = webCatalogs.en;
 
-type Tree = { [key: string]: string | Tree };
-
-function flatten(tree: Tree, prefix = ""): Map<string, string> {
+function flatten(tree: MessageTree, prefix = ""): Map<string, string> {
   const entries = new Map<string, string>();
   for (const [key, value] of Object.entries(tree)) {
     const path = prefix ? `${prefix}.${key}` : key;
@@ -23,7 +18,7 @@ function placeholders(message: string): string[] {
 }
 
 const catalogs = Object.fromEntries(
-  await Promise.all(LOCALES.map(async (locale) => [locale, flatten(await loadCatalog(locale))] as const)),
+  LOCALES.map((locale) => [locale, flatten(webCatalogs[locale])] as const),
 ) as Record<Locale, Map<string, string>>;
 const reference = catalogs[DEFAULT_LOCALE];
 
@@ -50,7 +45,7 @@ describe("message catalogs", () => {
 
   it("define exactly the common keys", () => {
     expect(Object.keys(en.common).sort()).toEqual(
-      ["accountNavLabel", "brandHomeLabel", "languageSwitcherLabel", "signIn", "signOut", "signUp"].sort(),
+      ["accountNavLabel", "brandHomeLabel", "landing", "languageSwitcherLabel", "signIn", "signOut", "signUp"].sort(),
     );
   });
 });

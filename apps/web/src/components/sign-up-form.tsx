@@ -1,16 +1,17 @@
 "use client";
 
-import { authErrorMessageKey, localizeMessage, signUpInputSchema } from "@aurora/shared";
-import { useLocale, useTranslations } from "next-intl";
+import { authErrorMessageKey, signUpInputSchema } from "@aurora/shared";
+import { useTranslations } from "next-intl";
 import { useState, type FormEvent } from "react";
 import { useRouter } from "@/i18n/navigation";
 import { fieldErrorsFromIssues } from "@/lib/form-errors";
+import { useLocalizer } from "@/lib/localize-message";
 import { useAuthClient } from "@/lib/use-auth-client";
 import { Field, FormError } from "./form-parts";
 
 export function SignUpForm() {
   const router = useRouter();
-  const locale = useLocale();
+  const localize = useLocalizer();
   const authClient = useAuthClient();
   const t = useTranslations("auth");
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
@@ -22,14 +23,14 @@ export function SignUpForm() {
     setFormError("");
     const parsed = signUpInputSchema.safeParse(Object.fromEntries(new FormData(event.currentTarget)));
     if (!parsed.success) {
-      setFieldErrors(fieldErrorsFromIssues(locale, parsed.error.issues));
+      setFieldErrors(fieldErrorsFromIssues(localize, parsed.error.issues));
       return;
     }
     setFieldErrors({});
     setPending(true);
     const { error } = await authClient.signUp.email(parsed.data);
     setPending(false);
-    if (error) return setFormError(localizeMessage(locale, authErrorMessageKey(error.code)));
+    if (error) return setFormError(localize(authErrorMessageKey(error.code)));
     router.push("/dashboard");
     router.refresh();
   }

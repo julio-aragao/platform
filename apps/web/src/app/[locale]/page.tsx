@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { hasLocale } from "next-intl";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import { Brand } from "@/components/brand";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { InfoSheet } from "@/components/info-sheet";
@@ -23,7 +23,6 @@ export async function generateMetadata({ params }: PageProps<"/[locale]">): Prom
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
-  setRequestLocale(locale);
   const t = await getTranslations("home");
   const common = await getTranslations("common");
   const landing = await getTranslations("common.landing");
@@ -56,14 +55,6 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
               {t("heroTitle")}
             </h1>
             <p className="max-w-[52ch] text-lg text-graphite">{t("heroText")}</p>
-            <div className="flex flex-wrap gap-3 pt-2">
-              <Link href="/sign-up" className="btn btn-primary">
-                {landing("signUp")}
-              </Link>
-              <Link href="/sign-in" className="btn btn-secondary">
-                {landing("signIn")}
-              </Link>
-            </div>
           </div>
           <InfoSheet />
         </section>
