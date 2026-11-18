@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { hasLocale } from "next-intl";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import { AuthShell } from "@/components/auth-shell";
 import { SignInForm } from "@/components/sign-in-form";
 import { pageMetadata } from "@/i18n/metadata";
@@ -19,7 +19,6 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/admin-si
 export default async function SignInPage({ params }: PageProps<"/[locale]/admin-sign-in">) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
-  setRequestLocale(locale);
   if (await getCurrentUser(locale)) redirect({ href: "/dashboard", locale });
   const t = await getTranslations("auth");
 

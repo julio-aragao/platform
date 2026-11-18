@@ -1,7 +1,8 @@
 import { cookies } from "next/headers";
+import { apiUrl } from "./api-url";
 import { type Locale, meResponseSchema, type SessionUser } from "@aurora/shared";
 
-const apiUrl = process.env.API_URL ?? "http://localhost:4000";
+const API_URL = apiUrl(process.env);
 
 /**
  * Server-side session lookup: forwards the browser's cookies to the API with the page language.
@@ -11,7 +12,7 @@ export async function getCurrentUser(locale: Locale): Promise<SessionUser | null
   try {
     const cookie = (await cookies()).toString();
     if (!cookie) return null;
-    const res = await fetch(`${apiUrl}/api/me`, {
+    const res = await fetch(`${API_URL}/api/me`, {
       headers: { cookie, "accept-language": locale },
       cache: "no-store",
     });

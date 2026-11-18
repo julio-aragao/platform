@@ -26,11 +26,12 @@ All development follows **SOLID** and **DRY**. Apply them to new code and when t
 
 - Every error response uses the shared `{error: {code, message}}` shape. Better Auth's own `/api/auth/*` routes are the one exception.
 - LLM keys and calls stay on the server. Every LLM call is logged to the `LlmCall` table.
-- Schema changes go through a Prisma migration. Never edit the database by hand. pg-boss owns its own `pgboss` schema.
+- Schema changes go through a Prisma migration. Never change the schema by hand. Message rows in `i18n_message` are data and may be edited directly until the edit page exists. pg-boss owns its own `pgboss` schema.
 - Pin dependency versions exactly. Do not add `minimumReleaseAgeExclude` entries to `pnpm-workspace.yaml`.
 - Use Node 22 (`.nvmrc`). The Expo dev server does not run on older versions.
-- User-visible text lives only in catalogs (`apps/web/src/i18n/messages`, `packages/shared/src/i18n/catalogs`).
+- User-visible text lives only in the catalogs under `packages/shared/src/i18n/catalogs` (including `web/`). At runtime the `i18n_message` table is the one source of messages.
+- Seed mechanics: the catalog files are seed input only. A new key reaches an environment by running `pnpm db:seed`, which is insert-only (it never updates or deletes rows), and a running API must be restarted to pick the rows up.
 - Page links and redirects go through `@/i18n/navigation`.
-- Adding a locale means adding its catalogs and a route-map entry, and registering it in the shared locale module (`LOCALES` and the helpers beside it).
+- Adding a locale means adding its catalogs and a route-map entry, and registering it in the shared locale module (`LOCALES` and the helpers beside it). Then run `pnpm db:seed` and restart the API: a locale without seed rows makes its pages fail with "API returned no messages".
 - Code, identifiers, internal route names and comments are English.
 - Run `pnpm lint && pnpm typecheck && pnpm test && pnpm build` before calling work done.

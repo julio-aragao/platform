@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { errorResponseSchema, healthResponseSchema, meResponseSchema } from "@aurora/shared";
-import { buildTestApp, testUser } from "./helpers";
+import type { MessageStore } from "../src/messages/store";
+import { buildTestApp, fakeAuth, testUser } from "./helpers";
 
 describe("app", () => {
   const app = buildTestApp();
@@ -32,5 +33,20 @@ describe("app", () => {
   it("delegates /api/auth/* to the auth handler", async () => {
     const res = await app.request("/api/auth/anything", { method: "POST" });
     expect(res.status).toBe(200);
+  });
+
+  describe("when the message store never answers", () => {
+    const hanging: MessageStore = { forLocale: () => new Promise(() => {}) };
+    const stuckApp = buildTestApp(fakeAuth(), hanging);
+
+    it("still answers the health check", { timeout: 500 }, async () => {
+      const res = await stuckApp.request("/api/health");
+      expect(res.status).toBe(200);
+    });
+
+    it("still reaches the auth handler", { timeout: 500 }, async () => {
+      const res = await stuckApp.request("/api/auth/anything", { method: "POST" });
+      expect(res.status).toBe(200);
+    });
   });
 });

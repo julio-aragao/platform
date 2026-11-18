@@ -1,9 +1,8 @@
-import type { Locale } from "@aurora/shared";
-import type en from "./messages/en.json";
+import type { Locale, WebMessages } from "@aurora/shared";
 
 declare module "next-intl" {
   interface AppConfig {
     Locale: Locale;
-    Messages: typeof en;
+    Messages: WebMessages;
   }
 }

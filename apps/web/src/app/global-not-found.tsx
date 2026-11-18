@@ -9,6 +9,9 @@ import "./globals.css";
 
 export const metadata: Metadata = { title: "404 · Aurora" };
 
+// Its messages come from the API, so it must render on demand rather than at build time.
+export const dynamic = "force-dynamic";
+
 /**
  * Unmatched URLs. A dynamic `[locale]` root layout cannot host `not-found.tsx` (Next falls back
  * to an unstyled shell without `lang`), so this page renders its own document. The proxy has

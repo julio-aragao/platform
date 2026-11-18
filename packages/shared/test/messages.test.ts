@@ -32,22 +32,25 @@ describe("catalogs", () => {
 
 describe("translate", () => {
   it("interpolates", () => {
-    expect(translate("en", "validation.password.tooShort", { min: 8 })).toBe(
+    expect(translate(catalogs.en, "validation.password.tooShort", { min: 8 })).toBe(
       "The password must be at least 8 characters long.",
     );
-    const pt = translate("pt-br", "validation.password.tooShort", { min: 8 });
+    const pt = translate(catalogs["pt-br"], "validation.password.tooShort", { min: 8 });
     expect(pt).toContain("8");
     expect(pt).not.toContain("{");
+  });
+  it("returns the key itself when the map has no entry", () => {
+    expect(translate({}, "error.badRequest")).toBe("error.badRequest");
   });
 });
 
 describe("localizeMessage", () => {
   it("handles keys and unknown text", () => {
-    expect(localizeMessage("en", "validation.email.invalid")).toBe(catalogs.en["validation.email.invalid"]);
-    expect(localizeMessage("pt-br", "Invalid input: expected string")).toBe(
+    expect(localizeMessage(catalogs.en, "validation.email.invalid")).toBe(catalogs.en["validation.email.invalid"]);
+    expect(localizeMessage(catalogs["pt-br"], "Invalid input: expected string")).toBe(
       catalogs["pt-br"]["error.badRequest"],
     );
-    expect(localizeMessage("en", "validation.password.tooShort")).toContain("8");
+    expect(localizeMessage(catalogs.en, "validation.password.tooShort")).toContain("8");
   });
 });
 

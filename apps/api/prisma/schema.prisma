@@ -68,3 +68,14 @@ model Verification {
   @@index([identifier])
   @@map("verification")
 }
+
+// UI messages shown by web and mobile. Seeded from the shared catalogs, then owned by the database.
+model I18nMessage {
+  id      String @id
+  name    String
+  message String
+  locale  String
+
+  @@unique([name, locale])
+  @@map("i18n_message")
+}

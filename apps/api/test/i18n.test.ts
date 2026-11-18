@@ -3,7 +3,8 @@ import { Hono } from "hono";
 import { zValidator } from "@hono/zod-validator";
 import { z } from "zod";
 import { catalogs, errorResponseSchema, signUpInputSchema } from "@aurora/shared";
-import { buildTestApp, fakeAuth } from "./helpers";
+import { buildTestApp, fakeAuth, fakeMessageStore } from "./helpers";
+import { createCachedMessageStore } from "../src/messages/store";
 import { localeMiddleware, type AppEnv } from "../src/locale";
 import { zodValidationHook } from "../src/validation";
 
@@ -47,9 +48,39 @@ describe("localised errors", () => {
   });
 });
 
+describe("when messages cannot be loaded", () => {
+  it("uses the message key as text and keeps /api/health up when the loader rejects", async () => {
+    const spy = vi.spyOn(console, "error").mockImplementation(() => {});
+    const app = buildTestApp(
+      fakeAuth(),
+      createCachedMessageStore(async () => {
+        throw new Error("db down");
+      }),
+    );
+    const res = await app.request("/api/me", { headers: { "accept-language": "en" } });
+    expect(res.status).toBe(401);
+    expect(await message(res)).toBe("error.unauthorized");
+    expect((await app.request("/api/health")).status).toBe(200);
+    expect(spy).toHaveBeenCalled();
+    spy.mockRestore();
+  });
+
+  it("uses the message key as text and logs when the store has no rows", async () => {
+    const spy = vi.spyOn(console, "error").mockImplementation(() => {});
+    const app = buildTestApp(fakeAuth(), createCachedMessageStore(async () => []));
+    const res = await app.request("/api/me", { headers: { "accept-language": "en" } });
+    expect(res.status).toBe(401);
+    expect(await message(res)).toBe("error.unauthorized");
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(String(spy.mock.calls[0]?.[0])).toContain("en");
+    expect(String(spy.mock.calls[0]?.[0])).toContain("pnpm db:seed");
+    spy.mockRestore();
+  });
+});
+
 describe("zodValidationHook", () => {
   const mini = new Hono<AppEnv>()
-    .use("*", localeMiddleware())
+    .use("*", localeMiddleware(fakeMessageStore()))
     .post("/signup", zValidator("json", signUpInputSchema, zodValidationHook), (c) => c.json({ ok: true }))
     .post("/num", zValidator("json", z.object({ n: z.number() }), zodValidationHook), (c) =>
       c.json({ ok: true }),

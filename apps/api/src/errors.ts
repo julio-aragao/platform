@@ -7,7 +7,7 @@ import {
   type ErrorResponse,
   type MessageKey,
 } from "@aurora/shared";
-import { requestLocale } from "./locale";
+import { requestMessages } from "./locale";
 
 const STATUS_CODES: Record<ErrorCode, ContentfulStatusCode> = {
   bad_request: 400,
@@ -30,7 +30,7 @@ export class ApiError extends Error {
 export function errorResponse(c: Context, code: ErrorCode, messageKey?: MessageKey) {
   const key = messageKey ?? errorCodeMessageKey[code];
   const body: ErrorResponse = {
-    error: { code, message: localizeMessage(requestLocale(c), key, errorCodeMessageKey[code]) },
+    error: { code, message: localizeMessage(requestMessages(c), key, errorCodeMessageKey[code]) },
   };
   return c.json(body, STATUS_CODES[code]);
 }

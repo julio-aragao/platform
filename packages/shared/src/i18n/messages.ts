@@ -12,19 +12,27 @@ export function isMessageKey(value: unknown): value is MessageKey {
   return typeof value === "string" && Object.hasOwn(en, value);
 }
 
+/** The messages of one locale, keyed by dotted name (`error.unauthorized`). */
+export type MessageMap = Readonly<Record<string, string>>;
+
+/** Looks a key up in a message map; a missing key returns the key itself so the gap is visible. */
 export function translate(
-  locale: Locale,
+  messages: MessageMap,
   key: MessageKey,
   params?: Record<string, string | number>,
 ): string {
-  const template = catalogs[locale][key];
+  const template = messages[key] ?? key;
   if (!params) return template;
   return template.replace(/\{(\w+)\}/g, (match, name: string) =>
     name in params ? String(params[name]) : match,
   );
 }
 
-export function localizeMessage(locale: Locale, message: string, fallbackKey?: MessageKey): string {
-  if (isMessageKey(message)) return translate(locale, message, { min: PASSWORD_MIN_LENGTH });
-  return translate(locale, fallbackKey ?? "error.badRequest");
+export function localizeMessage(
+  messages: MessageMap,
+  message: string,
+  fallbackKey?: MessageKey,
+): string {
+  if (isMessageKey(message)) return translate(messages, message, { min: PASSWORD_MIN_LENGTH });
+  return translate(messages, fallbackKey ?? "error.badRequest");
 }

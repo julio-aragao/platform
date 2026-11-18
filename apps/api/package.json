@@ -10,7 +10,8 @@
     "typecheck": "prisma generate && tsc --noEmit",
     "test": "prisma generate && vitest run",
     "db:migrate": "prisma migrate dev",
-    "db:deploy": "prisma migrate deploy"
+    "db:deploy": "prisma migrate deploy",
+    "db:seed": "prisma generate && prisma db seed"
   },
   "dependencies": {
     "@aurora/shared": "workspace:*",
